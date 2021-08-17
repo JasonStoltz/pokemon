@@ -1,4 +1,4 @@
-import { withSearchkit } from "@searchkit/client";
+import { withSearchkit, withSearchkitRouting } from "@searchkit/client";
 import withApollo from "../lib/withApollo";
 import dynamic from 'next/dynamic'
 const Search = dynamic(
@@ -11,4 +11,4 @@ const Index = () => {
   return <Search />
 }
 
-export default withApollo(withSearchkit(Index));
+export default withApollo(withSearchkit(withSearchkitRouting(Index)));
