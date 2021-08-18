@@ -6,7 +6,6 @@ const Search = dynamic(
   { ssr: false }
 )
 
-
 const Index = () => {
   return <Search />
 }

@@ -6,7 +6,8 @@ import {
   SearchBar,
   Pagination,
   ResetSearchButton,
-  SelectedFilters
+  SelectedFilters,
+  SortingSelector
 } from '@searchkit/elastic-ui'
 
 import {
@@ -22,7 +23,8 @@ import {
   EuiTitle,
   EuiHorizontalRule,
   EuiFlexGroup,
-  EuiFlexItem
+  EuiFlexItem,
+  EuiSpacer
 } from '@elastic/eui'
 
 const QUERY = gql`
@@ -108,7 +110,7 @@ export const HitsList = ({ data }) => (
           <EuiFlexGroup>
             <EuiFlexItem>
               <a href={hit.fields.url} target="_blank" rel="noreferrer" >
-                <img src={hit.fields.image} alt="Image of pokemon" />
+                <img src={hit.fields.image} alt="Image of pokemon" style={{ maxWidth: '200px' }}/>
               </a>
             </EuiFlexItem>
             <EuiFlexItem grow={4}>
@@ -151,6 +153,8 @@ const Search = () => {
       <EuiPageSideBar>
         <SearchBar loading={loading} />
         <EuiHorizontalRule margin="m" />
+        <SortingSelector data={data?.results} loading={loading} />
+        <EuiSpacer />
         <Facets data={data?.results} loading={loading} />
       </EuiPageSideBar>
       <EuiPageBody component="div">
